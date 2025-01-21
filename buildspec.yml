@@ -28,9 +28,10 @@ phases:
       - find target/ -name "*.jar"
       - echo "Renaming JAR for deployment..."
       - mv target/*.jar app.jar || (echo "No JAR file found. Build might have failed." && exit 1)
-    
+      - echo "Verifying the renamed JAR file..."
+      - ls -lh app.jar
+
 artifacts:
   files:
-    - target/app.jar
+    - app.jar
   discard-paths: yes
-  base-directory: target
