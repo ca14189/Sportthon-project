@@ -28,6 +28,8 @@ phases:
       - find target/ -name "*.jar"
       - echo "Renaming JAR for deployment..."
       - mv target/*.jar app.jar || (echo "No JAR file found. Build might have failed." && exit 1)
+       - echo "Uploading JAR to S3..."
+    - aws s3 cp app.jar s3://stylrax-123/code-build/app.jar
 artifacts:
   files:
     - app.jar
