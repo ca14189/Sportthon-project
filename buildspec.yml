@@ -7,7 +7,7 @@ phases:
       - if [ -x "$(command -v apt-get)" ]; then apt-get update && apt-get install -y openjdk-17-jdk; fi
       - echo "Downloading Maven..."
       - curl --retry 3 --retry-delay 5 -L -o /tmp/maven.tar.gz https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz
-      # Verify tarball integrity
+      - if [ ! -s /tmp/maven.tar.gz ]; then echo "Maven download failed. Exiting."; exit 1; fi
       - echo "Verifying checksum..."
       - echo "a7a5e4b30329c01cc74ae9941d5d3788f5bb1f33b0e74d89474bd403bd6d88cd051fb73db3745fdce8b2ab7afbc3f4d150b7eb134ec07c083003d4f14c80d516  /tmp/maven.tar.gz" | sha512sum -c - || (echo "Checksum mismatch. Exiting."; exit 1)
       - sudo mkdir -p /opt
