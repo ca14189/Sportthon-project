@@ -19,11 +19,15 @@ phases:
   build:
     commands:
       - echo "Building the application..."
-      - mvn package -DskipTests
+      - mvn clean install -DskipTests -X || (echo "Maven build failed. Please check the logs for details." && exit 1)
   post_build:
     commands:
+      - echo "Listing target directory contents..."
+      - ls -lh target/
+      - echo "Checking if any .jar file exists in the target directory..."
+      - find target/ -name "*.jar"
       - echo "Renaming JAR for deployment..."
-      - mv target/*.jar app.jar
+      - mv target/*.jar app.jar || (echo "No JAR file found. Build might have failed." && exit 1)
 artifacts:
   files:
     - app.jar
