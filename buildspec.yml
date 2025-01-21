@@ -4,26 +4,23 @@ phases:
   install:
     commands:
       - echo "Installing dependencies..."
-      - yum install -y java-17-openjdk-devel  # Install Java 17 (adjust based on your JDK version)
-      - curl -L -o /tmp/maven.tar.gz https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz
+      - if [ -x "$(command -v yum)" ]; then yum install -y java-17-openjdk-devel; fi
+      - if [ -x "$(command -v apt-get)" ]; then apt-get update && apt-get install -y openjdk-17-jdk; fi
+      - curl -L -o /tmp/maven.tar.gz https://dlcdn.apache.org/maven/maven-3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz
       - tar -xzf /tmp/maven.tar.gz -C /opt
-      - export PATH=$PATH:/opt/apache-maven-3.9.5/bin  # Add Maven to PATH
-      - mvn -version  # Verify Maven installation
+      - export PATH=$PATH:/opt/apache-maven-3.9.5/bin
+      - mvn -version
   pre_build:
     commands:
-      - echo "Preparing build..."
-      - mvn clean  # Clean previous builds
+      - mvn clean
   build:
     commands:
-      - echo "Building the application..."
-      - mvn package -DskipTests  # Package the application without running tests
+      - mvn package -DskipTests
   post_build:
     commands:
-      - echo "Running post-build actions..."
-      - mv target/*.jar app.jar  # Rename the packaged JAR file for easier deployment
+      - mv target/*.jar app.jar
 artifacts:
   files:
-    - app.jar  # Include the built JAR file
-    - buildspec.yml  # Include the buildspec file for future reference
+    - app.jar
   discard-paths: yes
-  base-directory: target  # Base directory for artifacts
+  base-directory: target
