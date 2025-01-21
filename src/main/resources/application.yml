@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sportthon
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always # Optional, to initialize the schema and data
+  jpa:
+    hibernate:
+      ddl-auto: update # Use 'validate', 'none', or 'create-drop' as needed
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect # Update dialect for your MySQL version
+        format_sql: true # Optional, for formatted SQL logs
+        show_sql: false  # Optional, to hide SQL logs in console
+  sql:
+    init:
+      platform: mysql # Optional, for initializing scripts
+      mode: always     # Optional, executes schema/data SQL scripts always
+
+
+security:
+  jwt:
+    secret-key: 3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
+    expiration-time: 3600000 # 1 hour in milliseconds
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: INFO
+    root: INFO
+    sun:
+      rmi: ERROR
