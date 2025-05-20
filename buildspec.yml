@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17  # Or corretto11/8 depending on your project
+    commands:
+      - echo Installing dependencies...
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean package -DskipTests
+
+artifacts:
+  files:
+    - target/*.jar
+    - appspec.yml
+    - scripts/**  # Deployment scripts (start/stop/app)
+  discard-paths: yes

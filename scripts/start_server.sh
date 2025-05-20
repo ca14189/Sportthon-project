@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "Starting the application..."
-nohup java -jar /home/ubuntu/springboot-app/app.jar > /dev/null 2>&1 &
+cd /home/ubuntu/app
+nohup java -jar sportthon.jar > output.log 2>&1 &
