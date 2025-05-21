@@ -21,7 +21,7 @@ phases:
 
 artifacts:
   files:
-    - sportthon.jar
+    - target/sportthon.jar
     - appspec.yml
     - scripts/**
   discard-paths: no
