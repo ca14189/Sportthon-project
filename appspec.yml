@@ -3,6 +3,8 @@ os: linux
 files:
   - source: target/sportthon.jar
     destination: /home/ubuntu/app
+  - source: scripts/
+    destination: /home/ubuntu/app/scripts/
 
 hooks:
   ApplicationStop:
