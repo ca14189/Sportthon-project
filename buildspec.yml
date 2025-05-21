@@ -10,6 +10,8 @@ phases:
       - export PATH=$JAVA_HOME/bin:$PATH
       - java -version
       - mvn --version
+      - echo "Making scripts executable..."
+      - chmod +x scripts/*.sh
 
   build:
     commands:
