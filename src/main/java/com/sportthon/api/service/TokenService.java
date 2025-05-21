@@ -8,6 +8,6 @@ public interface TokenService {
 
 	Boolean validateToken(String token, String username);
 
-	String generateToken(String username, String string);
+	String generateToken(String usertype, String string);
 	
 }
