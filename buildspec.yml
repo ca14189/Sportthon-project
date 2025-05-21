@@ -11,7 +11,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - mvn clean package -DskipTests -X
+      - mvn clean package -DskipTests
 
 artifacts:
   files:
