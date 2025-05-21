@@ -1,2 +1,3 @@
 #!/bin/bash
-pkill -f sportthon.jar || true
+echo "Stopping any running Java app..."
+pkill -f 'your-app.jar' || true
