@@ -17,7 +17,7 @@ phases:
     commands:
       - echo Build started on `date`
       - mvn clean package -DskipTests
-      - cp target/sportthon-0.0.1-SNAPSHOT.jar sportthon.jar
+      - cp target/sportthon-0.0.1-SNAPSHOT.jar target/sportthon.jar
 
 artifacts:
   files:
