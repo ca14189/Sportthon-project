@@ -2,10 +2,13 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: corretto17
     commands:
-      - echo Installing dependencies...
+      - echo "Installing Java 21..."
+      - curl -L -o java21.rpm https://corretto.aws/downloads/latest/amazon-corretto-21-x64-linux-jdk.rpm
+      - sudo rpm -i java21.rpm
+      - export JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
+      - export PATH=$JAVA_HOME/bin:$PATH
+      - java -version
       - mvn --version
 
   build:
