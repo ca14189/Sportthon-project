@@ -6,7 +6,7 @@ public interface TokenService {
 
 	String extractRole(String token);
 
-	Boolean validateToken(String token, String username3);
+	Boolean validateToken(String token, String username);
 
 	String generateToken(String username, String string);
 	
